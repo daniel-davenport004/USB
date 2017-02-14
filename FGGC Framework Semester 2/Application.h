@@ -76,13 +76,13 @@ private:
 	ID3D11Buffer*           _pConstantBuffer;
 
 	ID3D11DepthStencilView* _depthStencilView = nullptr;
-	ID3D11Texture2D* _depthStencilBuffer = nullptr;
+	ID3D11Texture2D*		_depthStencilBuffer = nullptr;
 
 	ID3D11ShaderResourceView * _pTextureRV = nullptr;
 
 	ID3D11ShaderResourceView * _pGroundTextureRV = nullptr;
 
-	ID3D11SamplerState * _pSamplerLinear = nullptr;
+	ID3D11SamplerState *	_pSamplerLinear = nullptr;
 
 	Light basicLight;
 

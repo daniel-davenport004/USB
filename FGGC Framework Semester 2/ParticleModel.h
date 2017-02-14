@@ -44,4 +44,8 @@ private:
 	ParticleState _particleState;
 	float _mass;
 	Vector3 _netForce;
+
+	Vector3 _thrustForce;
+	Vector3 _brakeForce;
+	Vector3 _frictionForce;
 };

@@ -5,8 +5,12 @@ ParticleModel::ParticleModel(Transform * transform) : _transform(transform)
 	_velocity = Vector3(0.0f, 0.0f, 0.001f);
 	_acceleration = Vector3(0.0f, 0.0f, 0.001f);
 	_particleState = ParticleState::EMPTY;
-	_mass = 0.0f;
+	_mass = 100000.0f;
 	_netForce = Vector3();
+
+	_thrustForce = Vector3(0.0f, 0.0f, 1.0f);
+	_brakeForce = Vector3(0.0f, 0.0f, -2.0f);
+	_frictionForce = Vector3(0.0f, 0.0f, 3.0f);
 }
 
 ParticleModel::~ParticleModel()
@@ -16,9 +20,10 @@ ParticleModel::~ParticleModel()
 void ParticleModel::Update(DWORD elapsedTime)
 {
 	UpdateNetForce();
-	//carry on
+	//Assumption: net external force is constant between consecutive updates of object state
+	UpdateAccel();
 
-	if (_particleState == ParticleState::VELOCITY)
+	if (_particleState == ParticleState::VELOCITY) //change time in calculations from 25 to something smaller
 	{
 		moveConstVel(elapsedTime);
 	}
@@ -50,10 +55,16 @@ void ParticleModel::moveConstAccel(DWORD elapsedTime)
 
 void ParticleModel::UpdateNetForce()
 {
+	//linked list?
 
+	_netForce.x += _thrustForce.x + _brakeForce.x + _frictionForce.x;
+	_netForce.y += _thrustForce.y + _brakeForce.y + _frictionForce.y;
+	_netForce.z += _thrustForce.z + _brakeForce.z + _frictionForce.z;
 }
 
 void ParticleModel::UpdateAccel()
 {
-
+	_acceleration.x = _netForce.x / _mass;
+	_acceleration.y = _netForce.y / _mass;
+	_acceleration.z = _netForce.z / _mass;
 }
