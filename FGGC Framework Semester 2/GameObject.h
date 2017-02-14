@@ -19,7 +19,7 @@ public:
 
 	string GetType() const { return _type; }
 
-	XMMATRIX GetWorldMatrix() const { return XMLoadFloat4x4(&_world); }
+	XMMATRIX GetWorldMatrix() const { return XMLoadFloat4x4(&_world); } //put in transform
 
 	Transform * GetTransformObject() const { return _transformObject; }
 	ParticleModel * GetParticleModel() const { return _particleModel; }
@@ -29,7 +29,6 @@ public:
 
 	void Update(DWORD elapsedTime);
 	void Draw(ID3D11DeviceContext * pImmediateContext);
-
 private:
 	string _type;
 

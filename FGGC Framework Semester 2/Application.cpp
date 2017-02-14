@@ -148,8 +148,8 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 
 	ParticleModel * particleModel = new ParticleModel(transformObject);
 	Appearance * appearance = new Appearance(planeGeometry, noSpecMaterial);
-	GameObject * gameObject = new GameObject("Floor", transformObject, particleModel, appearance);
 	appearance->SetTextureRV(_pGroundTextureRV);
+	GameObject * gameObject = new GameObject("Floor", transformObject, particleModel, appearance);
 
 	_gameObjects.push_back(gameObject);
 
@@ -161,8 +161,8 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 
 		particleModel = new ParticleModel(transformObject);
 		appearance = new Appearance(cubeGeometry, shinyMaterial);
-		gameObject = new GameObject("Cube " + i, transformObject, particleModel, appearance);
 		appearance->SetTextureRV(_pTextureRV);
+		gameObject = new GameObject("Cube " + i, transformObject, particleModel, appearance);
 
 		_gameObjects.push_back(gameObject);
 	}
@@ -661,13 +661,18 @@ void Application::Update(DWORD elapsedTime)
 	{
 		_gameObjects[1]->GetParticleModel()->moveForward();
 	}
+
 	if (GetAsyncKeyState('2'))
 	{
-		_gameObjects[1]->GetParticleModel()->SetVelocityOrAcceleration(ParticleState::VELOCITY);
+		_gameObjects[1]->GetParticleModel()->SetParticleState(ParticleState::VELOCITY);
 	}
-	if (GetAsyncKeyState('3'))
+	else if (GetAsyncKeyState('3'))
 	{
-		_gameObjects[1]->GetParticleModel()->SetVelocityOrAcceleration(ParticleState::ACCELERATION);
+		_gameObjects[1]->GetParticleModel()->SetParticleState(ParticleState::ACCELERATION);
+	}
+	else
+	{
+		_gameObjects[1]->GetParticleModel()->SetParticleState(ParticleState::EMPTY);
 	}
 
 	// Update camera

@@ -11,19 +11,6 @@
 #include "Camera.h"
 #include "Vector3.h"
 #include "GameObject.h"
-/*
-#include <SpriteFont.h>
-#include "CommonStates.h"
-#include "DDSTextureLoader.h"
-#include "Effects.h"
-#include "GeometricPrimitive.h"
-#include "Model.h"
-#include "PrimitiveBatch.h"
-#include "ScreenGrab.h"
-#include "SpriteBatch.h"
-#include "SpriteFont.h"
-#include "VertexTypes.h"
-*/
 
 using namespace DirectX;
 
@@ -128,7 +115,6 @@ private:
 	HRESULT InitShadersAndInputLayout();
 	HRESULT InitVertexBuffer();
 	HRESULT InitIndexBuffer();
-
 public:
 	Application();
 	~Application();

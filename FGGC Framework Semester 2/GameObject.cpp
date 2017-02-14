@@ -23,7 +23,7 @@ void GameObject::Update(DWORD elapsedTime)
 		XMStoreFloat4x4(&_world, this->GetWorldMatrix() * _parent->GetWorldMatrix());
 	}
 
-	//_particleModel->Update(elapsedTime);
+	_particleModel->Update(elapsedTime);
 }
 
 void GameObject::Draw(ID3D11DeviceContext * pImmediateContext)
