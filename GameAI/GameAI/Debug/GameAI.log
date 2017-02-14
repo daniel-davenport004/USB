@@ -1,0 +1,4 @@
+﻿  d016619fTank.cpp
+e:\uni 2nd year\ai\gameai\gameai\d016619f\d016619ftank.cpp(47): warning C4700: uninitialized local variable 'event' used
+  GameAI.vcxproj -> E:\Uni 2nd Year\AI\GameAI\Debug\GameAI.exe
+  GameAI.vcxproj -> E:\Uni 2nd Year\AI\GameAI\Debug\GameAI.pdb (Full PDB)
